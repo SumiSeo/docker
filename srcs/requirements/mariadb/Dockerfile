@@ -1,9 +1,9 @@
 FROM debian:bullseye
 
-RUN apt-get update 
-RUN apt-get -y upgrade 
-RUN apt-get install -y vim \
-    mariadb-server
+RUN apt-get update && \
+    apt-get -y upgrade && \
+    apt-get install -y vim mariadb-server && \
+    apt clean
 
 EXPOSE 3306
 
@@ -13,3 +13,4 @@ COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
