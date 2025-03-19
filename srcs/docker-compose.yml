@@ -12,6 +12,7 @@ services:
       - mariadb_data:/var/lib/mysql
     networks:
       - inception
+    tty: true
 
   wordpress:
     image: wordpress
@@ -22,7 +23,7 @@ services:
       - 9000
     depends_on:
       - mariadb
-    restart: always
+    tty: true
     env_file: .env
     volumes:
       - wordpress_data:/var/www/wordpress
@@ -45,6 +46,8 @@ services:
       - wordpress_data:/var/www/wordpress
     networks:
       - inception
+    tty: true
+
     
 networks:
   inception:
